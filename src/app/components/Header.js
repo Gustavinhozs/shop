@@ -13,13 +13,13 @@ const Header = () => {
           alt="Logo da loja"
         />
       </div>
-      <p className={style.marketing}>THE BEST STORE IN W🌎RLD</p>
+      <p className={style.marketing}>THE BEST STORE IN THE W🌎RLD</p>
       <button className={style.addButton}>Adicionar novo produto</button>
       <div className={style.cartIcon}>
         <Image
           width={70}
-          height={48}
-          src={"https://w7.pngwing.com/pngs/785/236/png-transparent-fire-and-shopping-cart-illustration-shopping-cart-icon-flame-shopping-cart-icon-text-camera-icon-logo.png"}
+          height={33}
+          src={"https://static.vecteezy.com/system/resources/previews/019/787/015/non_2x/shopping-cart-icon-shopping-basket-on-transparent-background-free-png.png"}
           alt="Ícone de Carrinho"
         />
       </div>
