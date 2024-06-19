@@ -16,26 +16,43 @@ export default  function Main() {
 
 
    const orderAz = () => {
-    const listAux = {...listProduct}.sort ((a,b) => 
-    a.title.localCompare(b.title) );
+    const listAux = [...listProduct].sort((a,b) => 
+    a.title.localeCompare(b.title) );
     setProduct(listAux);
    }
 
 
    const orderZa = () =>{
-    let listAux = [...listProduct].sort((a,b) =>
-    a.title.localCompare(b.title) );
+    let listAux = [...listProduct].reverse((a,b) =>
+    a.title.localeCompare(b.title) );
 
-    listAux = listAux.reverse();
-    setProduct(listAux0);
+    setProduct(listAux);
      }
 
+     const orderCres = () => {
+      let listPreco = [...listProduct].sort((a,b) => b.price - a.price)
+    
+      setProduct	(listPreco);
+     }
+
+     const orderDecre = () => {
+      let listPreco = [...listProduct].reverse((a,b) => b.price - a.price)
+
+      setProduct (listPreco)
+     }
+
+
+      if( listProduct[0] == null){
+        return <spinner/>
+      }
   return (
     <>
     <div className={style.filters}>
       <div>
          <button onClick={orderAz}> Az </button>
          <button onClick={orderZa}> Za </button>
+         <button onClick={orderCres}> Crescente </button>
+         <button onClick={orderDecre}> Decrescente </button>
       </div>
     </div>
     <main className={style.body}>
@@ -52,3 +69,4 @@ export default  function Main() {
     </>
   );
 }
+
