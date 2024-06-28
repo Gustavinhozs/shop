@@ -1,10 +1,14 @@
 "use client"
 import Image from "next/image"
 import style from "../page.module.css"
-import { useEffect,useState } from "react";
+import { useEffect,useState, useTransition } from "react";
+////importar spinner
 
 export default  function Main() {
   const [listProduct, setProduct] = useState([]);
+  const [listComplete, setListComplete] = useState([]);
+ const [textSearch, setTextSearch] = useState("");
+
   useEffect( ()=> {
     const getProduct = async () => {
       const response = await fetch("https://fakestoreapi.com/products/")
@@ -41,14 +45,30 @@ export default  function Main() {
       setProduct (listPreco)
      }
 
+     const search =(text) => {
+      setTextSearch(text);
+      if(text == ""){
+        setListProdut(listComplete);
+        return
+        }
+        const newList = listProduct.filter(() => 
+        product.title.toUpperCase().includes(textSearch.toUpperCase())
+        );
+        setListComplete(newList);
+      }
 
       if( listProduct[0] == null){
         return <spinner/>
       }
   return (
     <>
+
     <div className={style.filters}>
       <div>
+      <input type="text" value={textSearch}
+        placeholder="Pesquise um produto"
+        onChange={(event) => search (event.target.value) }/>
+
          <button onClick={orderAz}> Az </button>
          <button onClick={orderZa}> Za </button>
          <button onClick={orderCres}> Crescente </button>
@@ -68,5 +88,5 @@ export default  function Main() {
     </main>
     </>
   );
-}
+      }
 
