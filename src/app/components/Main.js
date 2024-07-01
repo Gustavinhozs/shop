@@ -13,8 +13,10 @@ export default  function Main() {
     const getProduct = async () => {
       const response = await fetch("https://fakestoreapi.com/products/")
       const data = await response.json();
-      setProduct(data);
+      setListProdut(data);
+      setListComplete(data);
     }
+
     getProduct()
    }, []);
 
